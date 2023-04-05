@@ -5,20 +5,20 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import wordnet as wn
 from PIL import Image
 
-# 이미지를 불러와서 분석할 단어를 선택합니다.
+# 이미지를 불러와서 분석할 단어를 선택
 image = Image.open("image_file.jpg")
 query = input("질문을 입력하세요: ")
 
-# 입력된 쿼리를 단어로 분리합니다.
+# 입력된 쿼리를 단어로 분리
 tokens = word_tokenize(query)
 
-# 단어들 중 명사만을 선택합니다.
+# 단어들 중 명사만을 선택
 nouns = []
 for word, pos in nltk.pos_tag(tokens):
     if pos.startswith("N"):
         nouns.append(word)
 
-# 선택된 명사 중 가장 관련성이 높은 synset을 찾습니다.
+# 선택된 명사 중 가장 관련성이 높은 synset을 찾기
 max_similarity = -1
 best_synset = None
 for noun in nouns:
